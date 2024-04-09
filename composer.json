@@ -4,37 +4,42 @@
     "type": "project",
     "license": "GPL-3.0-or-later",
     "require": {
-        "php": "^7.2",
         "ext-ctype": "*",
+        "ext-fileinfo": "*",
         "ext-iconv": "*",
         "ext-json": "*",
-        "ext-fileinfo": "*",
-        "symfony/asset": "5.0.*",
-        "symfony/console": "5.0.*",
-        "symfony/dotenv": "5.0.*",
-        "symfony/flex": "^1.1",
-        "symfony/framework-bundle": "5.0.*",
-        "symfony/http-client": "5.0.*",
+        "doctrine/annotations": "^1.10",
+        "doctrine/doctrine-bundle": "*",
+        "doctrine/doctrine-migrations-bundle": "^2",
+        "symfony/asset": "5.4",
+        "symfony/console": "5.4",
+        "symfony/dotenv": "5.4",
+        "symfony/filesystem": "5.4",
+        "symfony/finder": "5.4",
+        "symfony/framework-bundle": "5.4",
+        "symfony/http-client": "5.4",
+        "symfony/http-foundation": "5.4",
+        "symfony/mime": "^5.4",
         "symfony/monolog-bundle": "^3.1",
-        "symfony/process": "5.0.*",
-        "symfony/security-bundle": "5.0.*",
+        "symfony/process": "5.4",
+        "symfony/security-bundle": "5.4",
         "symfony/serializer-pack": "^1.0",
-        "symfony/twig-bundle": "5.0.*",
-        "symfony/web-link": "5.0.*",
-        "symfony/yaml": "5.0.*",
-        "symfony/filesystem": "5.0.*",
-        "symfony/finder": "5.0.*",
-        "symfony/http-foundation": "5.0.*",
-        "wikimedia/toolforge-bundle": "dev-symfony5"
+        "symfony/twig-bundle": "5.4",
+        "symfony/web-link": "5.4",
+        "symfony/yaml": "5.4",
+        "wikimedia/toolforge-bundle": "^1.6"
     },
     "require-dev": {
-        "mediawiki/mediawiki-codesniffer": "^28.0",
-        "symfony/browser-kit": "5.0.*",
-        "symfony/css-selector": "5.0.*",
-        "symfony/phpunit-bridge": "5.0.*"
+        "mediawiki/mediawiki-codesniffer": "^43.0",
+        "symfony/browser-kit": "5.4",
+        "symfony/css-selector": "5.4",
+        "symfony/phpunit-bridge": "5.4"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "autoload": {
         "psr-4": {
@@ -55,14 +60,11 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd"
-        },
         "post-install-cmd": [
-            "@auto-scripts"
+            "./bin/console cache:clear"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "./bin/console cache:clear"
         ],
         "test": [
             "composer validate",
@@ -79,7 +81,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.0.*"
+            "require": "5.4.*"
         }
     }
 }
